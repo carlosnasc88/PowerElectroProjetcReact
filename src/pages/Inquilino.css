@@ -1,0 +1,132 @@
+/* Fundo geral */
+body, .page-background {
+  background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+  background-attachment: fixed;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* evita colar nas bordas no celular */
+  box-sizing: border-box;
+}
+
+/* Container de formulário */
+.cadastro-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 50px 60px;
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: 30px;
+  border: 2px solid #DFCD90;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(223, 205, 144, 0.5);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Título */
+.cadastro-container h1 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #DFCD90;
+}
+
+/* Mensagem de erro */
+.cadastro-container p.error-message {
+  color: #e74c3c;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+.cadastro-container input[type="text"],
+.cadastro-container input[type="number"] {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #DFCD90;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.cadastro-container input[type="text"]:focus,
+.cadastro-container input[type="number"]:focus {
+  border-color: #bba568;
+  outline: none;
+}
+
+/* Grupo de botões */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+/* Botões padrão */
+.button-group button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background: linear-gradient(to right, #DFCD90, #bba568);
+  color: #000;
+}
+
+.button-group button:hover {
+  background: linear-gradient(to right, #c0ae75, #dfcd90);
+  box-shadow: 0 0 10px #DFCD90;
+}
+
+/* Responsivo: Tablets */
+@media (max-width: 768px) {
+  .cadastro-container {
+    padding: 40px 30px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button-group button {
+    width: 100%;
+  }
+}
+
+/* Responsivo: Celulares */
+@media (max-width: 480px) {
+  .cadastro-container {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+
+  .cadastro-container h1 {
+    font-size: 22px;
+  }
+
+  .cadastro-container input[type="text"],
+  .cadastro-container input[type="number"] {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .button-group {
+    gap: 10px;
+  }
+
+  .button-group button {
+    padding: 12px;
+    font-size: 15px;
+  }
+}

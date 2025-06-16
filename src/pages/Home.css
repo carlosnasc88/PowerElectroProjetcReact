@@ -1,0 +1,54 @@
+/* Estilo base do body */
+body {
+  overflow: hidden;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  background-color: #1a1a1a; 
+}
+
+/* Estilo do botão */
+button {
+  padding: 12px 28px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsividade para tablet (até 768px) */
+@media (max-width: 768px) {
+  button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
+/* Responsividade para celular (até 480px) */
+@media (max-width: 480px) {
+  body {
+    padding: 20px; 
+    text-align: center;
+  }
+
+  button {
+    width: 100%;
+    font-size: 15px;
+    padding: 12px;
+    box-sizing: border-box;
+  }
+}

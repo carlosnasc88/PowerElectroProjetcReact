@@ -10,8 +10,10 @@
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "pg": "^8.16.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-input-mask": "^2.0.4",
     "react-router-dom": "^7.6.2",
     "react-scripts": "5.0.1",
     "sqlite3": "^5.1.7",
@@ -21,7 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "startserver": "node --watch server.js"
   },
   "eslintConfig": {
     "extends": [

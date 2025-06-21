@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import './Casa.css'; 
+import React, { useState } from "react";
+import "./Casa.css";
 
 export default function Casa() {
   const [form, setForm] = useState({
-    numeroap: '',
-    bloco: '',
-    numerorel: '',
-    kwhinicial: '',
-    kwhatual: '',
-    valorKwh: ''
+    numeroap: "",
+    bloco: "",
+    numerorel: "",
+    kwhinicial: "",
+    kwhatual: "",
+    valorKwh: "",
   });
 
-  const [erro, setErro] = useState('');
+  const [erro, setErro] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,8 +20,15 @@ export default function Casa() {
 
   const validarCampos = () => {
     const { numeroap, bloco, numerorel, kwhinicial, kwhatual, valorKwh } = form;
-    if (!numeroap || !bloco || !numerorel || !kwhinicial || !kwhatual || !valorKwh) {
-      setErro('Preencha todos os campos corretamente.');
+    if (
+      !numeroap ||
+      !bloco ||
+      !numerorel ||
+      !kwhinicial ||
+      !kwhatual ||
+      !valorKwh
+    ) {
+      setErro("Preencha todos os campos corretamente.");
       return false;
     }
     return true;
@@ -38,27 +45,27 @@ export default function Casa() {
       numerorel: parseInt(form.numerorel),
       kwhinicial: parseFloat(form.kwhinicial),
       kwhatual: parseFloat(form.kwhatual),
-      valorKwh: parseFloat(form.valorKwh)
+      valorKwh: parseFloat(form.valorKwh),
     };
 
-    fetch('http://localhost:5500/casas', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(dados)
+    fetch("http://localhost:5500/casas", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dados),
     })
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Erro ao salvar dados');
+          throw new Error("Erro ao salvar dados");
         }
         return response.json();
       })
-      .then(data => {
-        console.log('Apartamento salvo com sucesso:', data);
-        window.location.href = '/ativos'; 
+      .then((data) => {
+        console.log("Apartamento salvo com sucesso:", data);
+        window.location.href = "/ativos";
       })
-      .catch(err => {
-        console.error('Erro ao salvar:', err);
-        setErro('Erro ao salvar os dados. Verifique o console.');
+      .catch((err) => {
+        console.error("Erro ao salvar:", err);
+        setErro("Erro ao salvar os dados. Verifique o console.");
       });
   };
 
@@ -121,9 +128,23 @@ export default function Casa() {
           />
 
           <div className="button-group">
-            <button type="submit" className="button-default">Salvar</button>
-            <button type="button" className="button-danger" onClick={() => window.history.back()}>Cancelar</button>
-            <button type="button" className="button-default" onClick={() => window.location.href = '/ativos'}>Lista de Ativos</button>
+            <button type="submit" className="button-default">
+              Salvar
+            </button>
+            <button
+              type="button"
+              className="button-danger"
+              onClick={() => window.history.back()}
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              className="button-default"
+              onClick={() => (window.location.href = "/CasasAtivas")}
+            >
+              Lista de Ativos
+            </button>
           </div>
         </form>
       </div>

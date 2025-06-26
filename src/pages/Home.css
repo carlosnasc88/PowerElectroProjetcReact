@@ -1,64 +1,58 @@
-/*Estilo base do body*/
+/* ===================== BASE ===================== */
 body {
-  overflow: hidden;
-  background-size: cover;
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1a1a1a;
+  overflow: hidden;
+}
+
+/* ===================== HOME CONTAINER ===================== */
+/*.home-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; 
-  background-color: #1a1a1a; 
-}
+  height: 100vh;
+  background: radial-gradient(circle at center, #1a1a1a, #0f0f0f);
+}*/
 
-/* Estilo do botão */
- button {
+/* ===================== BUTTONS ===================== */
+.menu-button {
   padding: 12px 28px;
   font-size: 18px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  transition: background-color 0.3s;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #2bc0e4, #eaecc6);
+  color: #161e3f;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2);
+  transition: background-color 0.3s, transform 0.3s ease;
 }
 
-
- button:hover {
-  background-color: #0056b3; 
+.menu-button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 18px rgba(0, 255, 255, 0.6);
 }
 
-/* Responsividade para tablet (até 768px) */
- @media (max-width: 768px) {
-  button {
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+  .menu-button {
     font-size: 16px;
     padding: 10px 20px;
   }
-} 
+}
 
-/* Responsividade para celular (até 480px) */
- @media (max-width: 480px) {
-  body {
-    padding: 20px; 
-    text-align: center;
-  }
-
-  button {
+@media (max-width: 480px) {
+  .menu-button {
     width: 100%;
     font-size: 15px;
     padding: 12px;
     box-sizing: border-box;
   }
-} 
+}
 
-
-
-
-
-
-
+/* ===================== MENU DOTS - ESTILO CIRCULAR ===================== */
 .menu-checkbox {
   display: none;
 }
@@ -82,7 +76,7 @@ body {
 }
 
 .menu-dots:hover {
-  box-shadow: 0 0 0 0.3rem #161e3f, 0 0 0 1rem rgba(22, 30, 63, 0.16);
+  box-shadow: 0 0 0 0.3rem #3b3f16, 0 0 0 1rem rgba(22, 30, 63, 0.16);
   transform: scale(1.2) rotate(90deg);
 }
 
@@ -97,6 +91,7 @@ body {
   margin-top: 0.3rem;
 }
 
+/* ===================== MENU ITEMS ===================== */
 .menu-items {
   position: absolute;
   top: -2.3rem;
@@ -131,6 +126,7 @@ body {
   text-align: center;
 }
 
+/* ===================== INTERAÇÕES MENU ===================== */
 .menu-checkbox:checked + .menu > .menu-dots {
   transform: none;
   box-shadow: 0 0 0 3.4rem #161e3f;
@@ -159,27 +155,10 @@ body {
   filter: none;
 }
 
-.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(1) {
-  transition-delay: 0.05s;
-}
-
-.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(2) {
-  transition-delay: 0.1s;
-}
-
-.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(3) {
-  transition-delay: 0.15s;
-}
-
-.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(4) {
-  transition-delay: 0.2s;
-}
-
-.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(5) {
-  transition-delay: 0.25s;
-}
-
-.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(6) {
-  transition-delay: 0.3s;
-}
-
+/* ===================== ANIMAÇÕES ===================== */
+.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(1) { transition-delay: 0.05s; }
+.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(2) { transition-delay: 0.1s; }
+.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(3) { transition-delay: 0.15s; }
+.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(4) { transition-delay: 0.2s; }
+.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(5) { transition-delay: 0.25s; }
+.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(6) { transition-delay: 0.3s; }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Casa.css';
+import './ListagemDeAtivos.css';
+
 
 export default function ListagemCasasAtivas() {
   const [casas, setCasas] = useState([]);
@@ -8,7 +9,7 @@ export default function ListagemCasasAtivas() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:5500/CasasAtivas') // Certifique-se que esta rota existe no backend e retorna as casas ativas
+    fetch('http://localhost:5500/CasasAtivas') 
       .then(res => {
         if (!res.ok) throw new Error('Erro ao buscar casas');
         return res.json();
@@ -18,7 +19,7 @@ export default function ListagemCasasAtivas() {
   }, []);
 
   return (
-    <div className="cadastro-container">
+    <div className="ativos-container">
       <h1>Casas Ativas</h1>
       {erro && <p className="error-message">{erro}</p>}
       {casas.length === 0 && !erro && <p>Nenhuma casa ativa encontrada.</p>}

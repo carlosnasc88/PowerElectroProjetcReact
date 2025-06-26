@@ -70,7 +70,7 @@ export default function Casa() {
   };
 
   return (
-    <div className="page-background">
+    <div >
       <div className="cadastro-container">
         <h1>Cadastro de Apartamento</h1>
 

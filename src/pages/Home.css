@@ -18,15 +18,15 @@ body {
 
 /* ===================== BUTTONS ===================== */
 .menu-button {
-  padding: 12px 28px;
+  padding: 12px 28px;  
   font-size: 18px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  background: linear-gradient(135deg, #DFCD90, #eaecc6);
+  background: linear-gradient(135deg, #161e3f, #DFCD90);
   color: #161e3f;
   font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2);
+  box-shadow: 0 4px 10px rgba(172, 169, 7, 0.849);
   transition: background-color 0.3s, transform 0.3s ease;
 }
 

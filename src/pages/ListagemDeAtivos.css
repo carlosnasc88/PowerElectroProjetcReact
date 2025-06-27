@@ -86,6 +86,14 @@ table {
   font-size: 16px;
   margin-top: 20px;
 }
+.scroll-table-wrapper {
+  max-height: 400px; /* ajuste conforme necessário */
+  overflow-y: auto;
+  margin-top: 20px;
+  border-radius: 15px;
+  border: 1px solid #DFCD90;
+}
+
 
 th, td {
   padding: 14px 20px;

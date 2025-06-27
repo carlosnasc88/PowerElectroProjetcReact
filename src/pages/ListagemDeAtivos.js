@@ -19,16 +19,19 @@ export default function ListagemCasasAtivas() {
   }, []);
 
   return (
-    <div className="ativos-container">
-      <h1>Casas Ativas</h1>
-      {erro && <p className="error-message">{erro}</p>}
-      {casas.length === 0 && !erro && <p>Nenhuma casa ativa encontrada.</p>}
+  <div className="ativos-container">
+    <h1>Casas Ativas</h1>
+    {erro && <p className="error-message">{erro}</p>}
+    {casas.length === 0 && !erro && <p>Nenhuma casa ativa encontrada.</p>}
+
+    {/* ENVOLVA AQUI A TABELA */}
+    <div className="scroll-table-wrapper">
       <table>
         <thead>
           <tr>
-            <th>Número Apartamento</th>
+            <th>N°Apartamento</th>
             <th>Bloco</th>
-            <th>Número Relógio</th>
+            <th>N° Relógio</th>
             <th>Kwh Inicial</th>
             <th>Kwh Atual</th>
             <th>Valor Kwh</th>
@@ -47,9 +50,12 @@ export default function ListagemCasasAtivas() {
           ))}
         </tbody>
       </table>
-      <div className="button-group">
-        <button onClick={() => navigate('/')}>Voltar à Home</button>
-      </div>
     </div>
-  );
+
+    <div className="button-group">
+      <button onClick={() => navigate('/')}>Voltar à Home</button>
+    </div>
+  </div>
+);
+
 }

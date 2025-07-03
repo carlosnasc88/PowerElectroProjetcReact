@@ -3,6 +3,14 @@ import Home from './pages/Home';
 import Casa from './pages/Casa';
 import Inquilino from './pages/Inquilino';
 import ListagemCasasAtivas from './pages/ListagemDeAtivos';
+import ListagemInquilinos from './pages/ListagemInquilinos';
+import 'primereact/resources/themes/lara-dark-indigo/theme.css'; 
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+
+
+
+
 
 function App() {
   return (
@@ -11,7 +19,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/casa" element={<Casa />} />
         <Route path="/inquilino" element={<Inquilino />} />
+        <Route path="/inquilino/:id" element={<Inquilino />} />
         <Route path="/CasasAtivas" element={<ListagemCasasAtivas />}/>
+        <Route path="inquilinos/listagem-inquilinos" element={<ListagemInquilinos />}/>
       </Routes>
     </Router>
   );

@@ -1,0 +1,111 @@
+/* Página de Listagem */
+.listagem-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #2c2c2c, #1a1a1a);
+  color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Cabeçalho com botão de ação */
+.listagem-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.listagem-header h1 {
+  color: #DFCD90;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.listagem-header button {
+  background: #DFCD90;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #121212;
+  box-shadow: 0 0 8px rgba(223, 205, 144, 0.5);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.listagem-header button:hover {
+  background: #e8dba4;
+}
+
+/* Container da Tabela */
+.listagem-container {
+  flex: 1;
+ 
+  background: rgba(0, 0, 0, 0.65);
+  border-radius: 15px;
+  padding: 30px;
+  overflow-x: auto;
+  box-shadow: 0 0 10px rgba(223, 205, 144, 0.3);
+}
+
+/* Tabela Scroll */
+.tabela-scroll {
+  max-height: 500px;
+  overflow-y: auto;
+  border-radius: 10px;
+}
+.h1{
+  color:#e8dba4; ;
+}
+
+/* Estilo da Tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #DFCD90;
+  text-align: left;
+  color: #fff;
+}
+
+th {
+  background-color: rgba(223, 205, 144, 0.25);
+  color: #DFCD90;
+}
+
+/* Ações */
+td button {
+  background: #DFCD90;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  margin-right: 5px;
+  font-weight: bold;
+  color: #121212;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+td button:hover {
+  background: #e8dba4;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .listagem-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  td button {
+    margin-bottom: 6px;
+  }
+}

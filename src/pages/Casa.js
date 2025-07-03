@@ -61,7 +61,7 @@ export default function Casa() {
       })
       .then((data) => {
         console.log("Apartamento salvo com sucesso:", data);
-        window.location.href = "/ativos";
+        window.location.href = "/CasasAtivas";
       })
       .catch((err) => {
         console.error("Erro ao salvar:", err);

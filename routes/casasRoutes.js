@@ -7,5 +7,7 @@ router.get("/", casasController.listarCasas);
 router.get("/CasasAtivas", casasController.listarCasasAtivas);
 router.get("/blocos-disponiveis", casasController.blocosDisponiveis);
 router.get("/casas-disponiveis/:bloco", casasController.casasDisponiveisPorBloco);
+router.get("/numeroaps-disponiveis/:bloco", casasController.numeroApDisponiveisPorBloco);
+
 
 module.exports = router;

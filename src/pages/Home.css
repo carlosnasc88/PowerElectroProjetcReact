@@ -1,164 +1,41 @@
-/* ===================== BASE ===================== */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #1a1a1a;
+.home-container {
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  position: relative;
   overflow: hidden;
 }
 
-/* ===================== HOME CONTAINER ===================== */
-/*.home-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: radial-gradient(circle at center, #1a1a1a, #0f0f0f);
-}*/
-
-/* ===================== BUTTONS ===================== */
-.menu-button {
-  padding: 12px 28px;  
-  font-size: 18px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  background: linear-gradient(135deg, #161e3f, #DFCD90);
-  color: #161e3f;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(172, 169, 7, 0.849);
-  transition: background-color 0.3s, transform 0.3s ease;
+.home-content {
+  padding: 60px 30px;
+  margin-left: 60px;
 }
 
-.menu-button:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 18px rgba(0, 255, 255, 0.6);
+h1 {
+  color: #00ffe7;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
 }
 
-/* ===================== RESPONSIVE ===================== */
-@media (max-width: 768px) {
-  .menu-button {
-    font-size: 16px;
-    padding: 10px 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .menu-button {
-    width: 100%;
-    font-size: 15px;
-    padding: 12px;
-    box-sizing: border-box;
-  }
-}
-
-/* ===================== MENU DOTS - ESTILO CIRCULAR ===================== */
-.menu-checkbox {
-  display: none;
-}
-
-.menu {
-  position: relative;
-}
-
-.menu-dots {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
-  box-shadow: 0 0 0 0.3rem #161e3f;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transform: rotate(90deg);
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-.menu-dots:hover {
-  box-shadow: 0 0 0 0.3rem #3b3f16, 0 0 0 1rem rgba(22, 30, 63, 0.16);
-  transform: scale(1.2) rotate(90deg);
-}
-
-.menu-dot {
-  width: 0.45rem;
-  height: 0.45rem;
-  background-color: #161e3f;
-  border-radius: 50%;
-}
-
-.menu-dot + .menu-dot {
-  margin-top: 0.3rem;
-}
-
-/* ===================== MENU ITEMS ===================== */
-.menu-items {
+.floating-menu-wrapper {
   position: absolute;
-  top: -2.3rem;
-  left: -2.2rem;
-  width: 9.4rem;
-  height: 11rem;
-  color: #fff;
-  pointer-events: none;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.menu-item {
-  transform: scale(0.5);
-  filter: blur(10px);
-  transition: 0.3s;
-}
-
-.menu-item:nth-child(odd) {
-  text-align: right;
-}
-
-.menu-item:nth-child(even) {
-  text-align: left;
-}
-
-.menu-item:first-child,
-.menu-item:last-child {
-  grid-column: span 2;
-  text-align: center;
-}
-
-/* ===================== INTERAÇÕES MENU ===================== */
-.menu-checkbox:checked + .menu > .menu-dots {
-  transform: none;
-  box-shadow: 0 0 0 3.4rem #161e3f;
-}
-
-.menu-checkbox:checked + .menu > .menu-items {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.menu-closer-overlay {
-  position: absolute;
-  left: 0;
   top: 0;
-  width: 100%;
+  left: 0;
   height: 100%;
-  background-color: transparent;
-  border-radius: 50%;
-  z-index: 2;
-  pointer-events: none;
+  z-index: 10;
 }
 
-.menu-checkbox:checked + .menu > .menu-items > .menu-item {
-  opacity: 1;
-  transform: none;
-  filter: none;
-}
+/* Responsivo para mobile */
+@media (max-width: 768px) {
+  .home-content {
+    margin-left: 0;
+    padding: 20px;
+  }
 
-/* ===================== ANIMAÇÕES ===================== */
-.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(1) { transition-delay: 0.05s; }
-.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(2) { transition-delay: 0.1s; }
-.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(3) { transition-delay: 0.15s; }
-.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(4) { transition-delay: 0.2s; }
-.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(5) { transition-delay: 0.25s; }
-.menu-checkbox:checked + .menu > .menu-items > .menu-item:nth-child(6) { transition-delay: 0.3s; }
+  .floating-menu-wrapper {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+  }
+}

@@ -11,7 +11,7 @@ body {
   color: #fff;
   padding: 20px;
  
-  /* IMPORTANTE: Removemos qualquer background para não cobrir a imagem do index.html */
+ 
 }
 
 /* Container geral do formulário com efeito vidro */
@@ -22,8 +22,8 @@ body {
   padding: 50px 60px;
 
   background: rgba(0, 0, 0, 0.25); /* transparência */
-  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
 
   border-radius: 30px;
   border: 2px solid rgba(223, 205, 144, 0.6);

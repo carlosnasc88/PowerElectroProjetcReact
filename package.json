@@ -11,6 +11,8 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "pg": "^8.16.1",
+    "primeicons": "^7.0.0",
+    "primereact": "^10.9.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-input-mask": "^2.0.4",

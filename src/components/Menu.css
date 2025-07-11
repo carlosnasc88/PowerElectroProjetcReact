@@ -1,98 +1,199 @@
-.custom-main-button {
-  background-color: #DFCD90; 
-  color: #c0cc18;            /* ícone ciano */
-  border: none;
-  box-shadow: 0 0 12px rgba(168, 157, 6, 0.4);
+/* Importa a fonte Poppins do Google Fonts para um visual moderno */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-  width: 160px;        /* Largura maior */
-  height: 30px;       /* Altura maior */
-  font-size: 1.6rem;  /* Tamanho do ícone */
+/* Variáveis CSS para a paleta de cores futurista com Glassmorphism */
+:root {
+    --background-dark: #121212;
+    --surface-dark: #1F1F1F;
+    --primary-accent: #DFCD90; /* Dourado principal de destaque */
+    --text-light: #EEEEEE;
+    --text-dark-on-gold: #3A3427; /* Marrom-acinzentado escuro para texto em dourado */
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 1%; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  animation: pulse 2.5s infinite;
+    /* Cores e efeitos para o Glassmorphism */
+    --glass-bg: rgba(255, 255, 255, 0.08); /* Fundo quase transparente */
+    --glass-border: rgba(223, 205, 144, 0.2); /* Borda sutil dourada transparente */
+    --glass-shadow: rgba(0, 0, 0, 0.3); /* Sombra suave */
+    --neon-glow: rgba(223, 205, 144, 0.6); /* Brilho neon para hover/animação */
+    --icon-color-glass: #DFCD90; /* Ícones dourados sobre o vidro */
 }
 
-/* Define a animação pulse */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 12px rgba(168, 157, 6, 0.4);
-  }
-  50% {
-    transform: scale(1.1);
-    box-shadow: 0 0 24px rgba(168, 157, 6, 0.8);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 12px rgba(168, 157, 6, 0.4);
-  }
-}
-
-
-.custom-main-button:hover {
-  transform: scale(2.1);
-  box-shadow: 0 0 100px rgba(164, 182, 4, 0.753);
-}
-
-
-/* Ícone do botão "Casa" */
-.menu-icon-casa .p-speeddial-action-icon {
-  color: #050808 !important;
-  font-size: 1.6rem;
- 
-}
-
-/* Ícone do botão "Inquilino" */
-.menu-icon-inquilino .p-speeddial-action-icon {
-  
-  color: #050808 !important;
-  font-size: 1.6rem;
- 
-}
-
-/* Círculo do botão "Casa" */
-.menu-icon-casa.p-speeddial-action {
-  background-color: #DFCD90 !important; /* cor de fundo */
-  width: 100px !important;                /* largura */
-  height: 100px !important;               /* altura */
-  border-radius: 50% !important;        /* deixa redondo */
-  box-shadow: 0 0 10px #c0cc18 !important; /* sombra */
-}
-
-/* Círculo do botão "Inquilino" */
-.menu-icon-inquilino.p-speeddial-action {
-  background-color: #DFCD90 !important; /* cor de fundo */
-  width: 100px !important;
-  height: 100px !important;
-  border-radius: 50% !important;
-  box-shadow: 0 0 10px #c0cc18 !important;
-}
-
-/* Círculo do botão "Sair" */
-.menu-icon-sair.p-speeddial-action {
-  background-color: #DFCD90 !important;
-  width: 100px !important;
-  height: 100px !important;
-  border-radius: 50% !important;
-  box-shadow: 0 0 10px #c0cc18 !important;
-}
-
-/* Ícone do botão "Sair" */
-.menu-icon-sair .p-speeddial-action-icon {
-  color: #050808 !important;
-  font-size: 1.6rem !important;
-}
-
-
+/* Wrapper para o menu flutuante */
 .floating-menu-wrapper {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
 }
 
+/* Estilos do botão principal (gatilho do SpeedDial) */
+.custom-main-button.p-speeddial-button {
+    /* Glassmorphism base */
+    background-color: var(--glass-bg); /* Fundo transparente */
+    border: 1px solid var(--glass-border); /* Borda transparente */
+    backdrop-filter: blur(8px); /* Efeito de desfoque de vidro */
+    -webkit-backdrop-filter: blur(8px); /* Para compatibilidade com navegadores WebKit */
+    
+    color: var(--icon-color-glass); /* Cor padrão do ícone, será sobrescrita pelo .pi */
+    box-shadow: 0 4px 15px var(--glass-shadow); /* Sombra suave */
+
+    width: 80px;   /* Tamanho do FAB padrão moderno */
+    height: 80px;  /* Tamanho do FAB padrão moderno */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Torna-o um círculo perfeito */
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transição suave para todos os efeitos */
+
+    animation: pulse-futuristic 2.5s infinite ease-in-out; /* Animação mais futurista */
+}
+
+/* Define a animação pulse para o botão principal com brilho futurista */
+@keyframes pulse-futuristic {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 15px var(--neon-glow), 0 0 5px var(--glass-shadow);
+    }
+    50% {
+        transform: scale(1.08); /* Pulsação mais notável */
+        box-shadow: 0 0 30px var(--neon-glow), 0 0 10px var(--glass-shadow); /* Brilho mais intenso */
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 15px var(--neon-glow), 0 0 5px var(--glass-shadow);
+    }
+}
+
+/* Hover do botão principal */
+.custom-main-button.p-speeddial-button:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* Um pouco mais opaco no hover */
+    box-shadow: 0 6px 20px var(--neon-glow), 0 0 15px var(--glass-shadow); /* Brilho e sombra mais fortes */
+    transform: scale(1.1); /* Aumento sutil no hover */
+    border-color: var(--primary-accent); /* Borda fica mais visível no hover */
+}
+
+/* ESTILOS PARA O ÍCONE DE RAIO DENTRO DO BOTÃO PRINCIPAL */
+.custom-main-button.p-speeddial-button .pi {
+    color: var(--icon-color-glass); /* Ícone dourado */
+    font-size: 2.2rem; /* Tamanho do ícone de raio */
+    transform: translate(-1px, 1px); /* Ajuste a posição X e Y do ícone */
+    transition: all 0.3s ease; /* Transição suave para o ícone */
+}
+
+/* Cor do ícone de raio no hover do botão principal */
+.custom-main-button.p-speeddial-button:hover .pi {
+    color: var(--primary-accent); /* Por exemplo, ícone também fica mais vibrante no hover */
+}
+
+
+/* Estilos gerais para os botões secundários do SpeedDial (itens do menu) */
+.p-speeddial-action {
+    /* Glassmorphism base */
+    background-color: var(--glass-bg) !important; /* Fundo transparente */
+    border: 1px solid var(--glass-border) !important; /* Borda transparente */
+    backdrop-filter: blur(6px) !important; /* Efeito de desfoque de vidro */
+    -webkit-backdrop-filter: blur(6px) !important;
+
+    width: 50px !important; /* Tamanho do botão secundário */
+    height: 50px !important;
+    border-radius: 50% !important; /* Circular */
+    box-shadow: 0 2px 8px var(--glass-shadow) !important; /* Sombra suave */
+    transition: all 0.3s ease; /* Transição suave */
+}
+
+/* Hover para os botões secundários */
+.p-speeddial-action:hover {
+    background-color: rgba(255, 255, 255, 0.15) !important; /* Mais opaco no hover */
+    box-shadow: 0 4px 12px var(--neon-glow) !important; /* Brilho mais forte no hover */
+    transform: translateY(-5px); /* Efeito de leve "subida" */
+    border-color: var(--primary-accent) !important; /* Borda fica mais visível no hover */
+}
+
+/* Estilos para os ícones dentro dos botões secundários */
+.p-speeddial-action .p-speeddial-action-icon {
+    color: var(--icon-color-glass) !important; /* Ícones dourados */
+    font-size: 1.5rem !important; /* Tamanho do ícone */
+    transition: color 0.3s ease;
+}
+
+/* Cores do ícone dos botões secundários no hover */
+.p-speeddial-action:hover .p-speeddial-action-icon {
+    color: var(--primary-accent) !important; /* Ícone mantém o dourado, ou pode ser ajustado para um dourado mais forte */
+}
+
+/* Estilos para os tooltips do PrimeReact */
+.p-tooltip .p-tooltip-text {
+    background-color: var(--glass-bg); /* Fundo de vidro para o tooltip */
+    color: var(--text-light); /* Texto claro */
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px var(--glass-shadow);
+    font-family: 'Poppins', sans-serif;
+}
+
+.p-tooltip .p-tooltip-arrow {
+    /* Ajusta a cor da seta do tooltip para combinar com o fundo do tooltip */
+    border-color: transparent;
+    border-top-color: var(--glass-bg); /* Exemplo para seta inferior */
+}
+
+/* Ajuste a cor da seta para diferentes posições, se necessário */
+.p-tooltip.p-tooltip-bottom .p-tooltip-arrow { border-bottom-color: var(--glass-bg); }
+.p-tooltip.p-tooltip-left .p-tooltip-arrow { border-left-color: var(--glass-bg); }
+.p-tooltip.p-tooltip-right .p-tooltip-arrow { border-right-color: var(--glass-bg); }
+.p-tooltip.p-tooltip-top .p-tooltip-arrow { border-top-color: var(--glass-bg); }
+
+
+/* Estilos para o overlay do SpeedDial (fundo semi-transparente quando aberto) */
+.p-speeddial-mask {
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo escuro semi-transparente */
+    opacity: 1; /* Garante que a opacidade seja aplicada */
+    transition: opacity 0.3s ease;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .custom-main-button.p-speeddial-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.6rem;
+    }
+
+    .p-speeddial-action {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    .p-speeddial-action .p-speeddial-action-icon {
+        font-size: 1.3rem !important;
+    }
+
+    .p-tooltip .p-tooltip-text {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-menu-wrapper {
+        bottom: 15px;
+        right: 15px;
+    }
+    .custom-main-button.p-speeddial-button {
+        width: 45px;
+        height: 45px;
+        font-size: 1.4rem;
+    }
+    .p-speeddial-action {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    .p-speeddial-action .p-speeddial-action-icon {
+        font-size: 1.1rem !important;
+    }
+}

@@ -15,12 +15,14 @@ export default function Inquilino() {
     casaId: "",
     numeroap: "",
     numerorel: "",
+    kwhatual: "",
   });
 
   const [blocos, setBlocos] = useState([]);
   const [casas, setCasas] = useState([]);
   const [erro, setErro] = useState("");
-  const [formAtivo, setFormAtivo] = useState(Boolean(id)); // Ativa o formulário ao clicar em "Novo"
+  const [formAtivo, setFormAtivo] = useState(Boolean(id));
+  const [kwhAtualAnterior, setKwhAtualAnterior] = useState(null);
 
   const isEditando = Boolean(id);
 
@@ -41,7 +43,9 @@ export default function Inquilino() {
             casaId: data.casa_id.toString(),
             numeroap: data.numeroap,
             numerorel: data.numerorel,
+            kwhatual: data.kwhatual || "",
           });
+          setKwhAtualAnterior(data.kwhatual || 0);
         })
         .catch(() => setErro("Erro ao carregar inquilino."));
     }
@@ -112,16 +116,24 @@ export default function Inquilino() {
   };
 
   const validarCadastro = () => {
-    const { nome, cpf, celular, email, bloco, casaId, numerorel } = form;
-    if (!nome || !cpf || !celular || !email || !bloco || !casaId || !numerorel) {
+    const { nome, cpf, celular, email, bloco, casaId, numerorel, kwhatual } = form;
+
+    if (!nome || !cpf || !celular || !email || !bloco || !casaId || !numerorel || !kwhatual) {
       setErro("Por favor, preencha todos os campos.");
       return false;
     }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       setErro("E-mail inválido.");
       return false;
     }
+
+    if (isEditando && parseFloat(kwhatual) < parseFloat(kwhAtualAnterior)) {
+      setErro("O valor de KWh Atual não pode ser menor que o valor anterior.");
+      return false;
+    }
+
     setErro("");
     return true;
   };
@@ -154,7 +166,7 @@ export default function Inquilino() {
   };
 
   return (
-    <div >
+    <div className="page-container">
       <main>
         <h1>{isEditando ? "Editar Inquilino" : "Cadastro de Inquilino"}</h1>
 
@@ -164,57 +176,29 @@ export default function Inquilino() {
           <div className="form-grid">
             <div className="form-field">
               <label>Nome</label>
-              <input
-                name="nome"
-                value={form.nome}
-                onChange={handleChange}
-                disabled={!formAtivo}
-              />
+              <input name="nome" value={form.nome} onChange={handleChange} disabled={!formAtivo} />
             </div>
 
             <div className="form-field">
               <label>CPF</label>
-              <input
-                name="cpf"
-                value={form.cpf}
-                onChange={handleChange}
-                maxLength={14}
-                disabled={!formAtivo}
-              />
+              <input name="cpf" value={form.cpf} onChange={handleChange} maxLength={14} disabled={!formAtivo} />
             </div>
 
             <div className="form-field">
               <label>Celular</label>
-              <input
-                name="celular"
-                value={form.celular}
-                onChange={handleChange}
-                maxLength={15}
-                disabled={!formAtivo}
-              />
+              <input name="celular" value={form.celular} onChange={handleChange} maxLength={15} disabled={!formAtivo} />
             </div>
 
             <div className="form-field">
               <label>E-mail</label>
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                disabled={!formAtivo}
-              />
+              <input type="email" name="email" value={form.email} onChange={handleChange} disabled={!formAtivo} />
             </div>
           </div>
 
           <div className="form-grid two-columns">
             <div className="form-field">
               <label>Bloco</label>
-              <select
-                name="bloco"
-                value={form.bloco}
-                onChange={handleChange}
-                disabled={!formAtivo}
-              >
+              <select name="bloco" value={form.bloco} onChange={handleChange} disabled={!formAtivo}>
                 <option value="">Selecione</option>
                 {blocos.map((b, i) => (
                   <option key={i} value={b}>{b}</option>
@@ -224,12 +208,7 @@ export default function Inquilino() {
 
             <div className="form-field">
               <label>N° da Casa</label>
-              <select
-                name="casaId"
-                value={form.casaId}
-                onChange={handleCasaChange}
-                disabled={!formAtivo}
-              >
+              <select name="casaId" value={form.casaId} onChange={handleCasaChange} disabled={!formAtivo}>
                 <option value="">Selecione</option>
                 {casas.map((casa) => (
                   <option key={casa.id} value={casa.id}>{casa.numeroap}</option>
@@ -243,25 +222,49 @@ export default function Inquilino() {
               <label>N° do Relógio</label>
               <input name="numerorel" value={form.numerorel} readOnly />
             </div>
+
+            <div className="form-field">
+              <label>KWh Atual</label>
+              <input
+                name="kwhatual"
+                type="number"
+                step="0.01"
+                value={form.kwhatual}
+                onChange={handleChange}
+                disabled={!formAtivo}
+              />
+            </div>
           </div>
 
           {formAtivo && (
             <div className="button-group">
               <button type="submit">Salvar</button>
-              <button type="button" onClick={() => navigate("/inquilinos/listagem-inquilinos")}>
+              <button
+                type="button"
+                onClick={() => {
+                  if (isEditando) {
+                    navigate("/inquilinos/listagem-inquilinos");
+                  } else {
+                    setFormAtivo(false);
+                    setErro("");
+                  }
+                }}
+              >
                 Cancelar
               </button>
             </div>
           )}
         </form>
 
-        {/* Botões Fixos Inferiores */}
         {!formAtivo && !isEditando && (
           <div className="button-group" style={{ marginTop: "30px", justifyContent: "center" }}>
             <button type="button" onClick={() => setFormAtivo(true)}>Novo Inquilino</button>
             <button type="button" onClick={() => navigate("/inquilinos/listagem-inquilinos")}>Listar Inquilinos</button>
-            <button onClick={() => navigate("/")}>Voltar para Página Inicial</button>
-
+            <button
+              type="button"
+              className="button-danger"
+              onClick={() => navigate("/")}> Cancelar
+            </button>
           </div>
         )}
       </main>

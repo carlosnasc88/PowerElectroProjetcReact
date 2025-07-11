@@ -7,7 +7,7 @@ import ListagemInquilinos from './pages/ListagemInquilinos';
 import 'primereact/resources/themes/lara-dark-indigo/theme.css'; 
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-
+import { PrimeReactProvider } from 'primereact/api'; 
 
 
 
@@ -22,6 +22,8 @@ function App() {
         <Route path="/inquilino/:id" element={<Inquilino />} />
         <Route path="/CasasAtivas" element={<ListagemCasasAtivas />}/>
         <Route path="inquilinos/listagem-inquilinos" element={<ListagemInquilinos />}/>
+        
+
       </Routes>
     </Router>
   );

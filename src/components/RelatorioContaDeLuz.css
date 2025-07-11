@@ -1,0 +1,260 @@
+/* src/components/RelatorioContaDeLuz.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Variáveis CSS globais (certifique-se que estão acessíveis) */
+:root {
+    --dark-bg: #121212;
+    --card-bg: #1f1f1f;
+    --primary-gold: #DFCD90;
+    --light-text: #EEE;
+    --subtle-border: #444;
+    --shadow-color-light: rgba(223, 205, 144, 0.5);
+    --shadow-color-dark: rgba(0, 0, 0, 0.4);
+    --hover-bg-subtle: rgba(223, 205, 144, 0.1);
+    --hover-gold-lighter: #e8dba4;
+    --button-text-color-dark: #3A3427;
+    --primary-accent: #DFCD90;
+    --pw-eltric-blue: #007bff; /* Azul comum em contas de energia, renomeado */
+    --pw-eltric-light-gray: #f0f0f0; /* Renomeado */
+    --pw-eltric-border-gray: #ccc; /* Renomeado */
+}
+
+.relatorio-conta-de-luz {
+    font-family: 'Poppins', sans-serif;
+    width: 210mm; /* Largura A4 */
+    min-height: 297mm; /* Altura A4 */
+    padding: 10mm 15mm; /* Margens internas */
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.4; /* Espaçamento de linha padrão */
+    font-size: 9pt; /* Tamanho base da fonte para o PDF */
+}
+
+.relatorio-conta-de-luz h2 {
+    font-size: 16pt;
+    color: var(--pw-eltric-blue); /* Usando a nova variável */
+    text-align: center;
+    margin-bottom: 5mm;
+}
+
+.relatorio-conta-de-luz h3 {
+    font-size: 11pt;
+    color: var(--dark-bg);
+    border-bottom: 1pt solid var(--pw-eltric-border-gray); /* Usando a nova variável */
+    padding-bottom: 2mm;
+    margin-bottom: 4mm;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.relatorio-conta-de-luz .secao {
+    margin-bottom: 7mm; /* Espaçamento entre seções */
+    padding: 3mm 0;
+    border: 0.5pt solid var(--pw-eltric-light-gray); /* Usando a nova variável */
+    border-radius: 3pt;
+    background-color: #fcfcfc;
+}
+
+/* Cabeçalho Pw Eltric */
+.cabecalho-pw-eltric { /* Renomeado */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 10mm;
+}
+
+.cabecalho-pw-eltric .logo-pw-eltric { /* Renomeado */
+    flex-shrink: 0;
+    margin-right: 10mm;
+}
+
+.cabecalho-pw-eltric .logo-pw-eltric img { /* Renomeado */
+    max-width: 30mm;
+    height: auto;
+}
+
+.cabecalho-pw-eltric .info-concessionaria {
+    flex-grow: 1;
+    font-size: 8pt;
+    line-height: 1.2;
+}
+
+.cabecalho-pw-eltric .info-fatura {
+    flex-shrink: 0;
+    text-align: right;
+    font-size: 9pt;
+    line-height: 1.3;
+    font-weight: 500;
+    color: var(--pw-eltric-blue); /* Usando a nova variável */
+}
+.cabecalho-pw-eltric .info-fatura strong {
+    font-size: 10pt;
+    color: var(--dark-bg);
+}
+
+
+/* Dados do Cliente */
+.dados-cliente-pw-eltric { /* Renomeado */
+    padding: 5mm 10mm;
+}
+.dados-cliente-pw-eltric .linha-dados {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2pt;
+    font-size: 9pt;
+}
+.dados-cliente-pw-eltric .linha-dados span {
+    color: #666;
+    flex-shrink: 0;
+    margin-right: 5mm;
+}
+.dados-cliente-pw-eltric .linha-dados strong {
+    flex-grow: 1;
+    text-align: right;
+}
+
+/* Detalhes do Consumo */
+.detalhes-consumo-pw-eltric { /* Renomeado */
+    padding: 5mm 10mm;
+}
+.detalhes-consumo-pw-eltric .consumo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3mm 5mm;
+}
+.detalhes-consumo-pw-eltric .consumo-item-pw-eltric { /* Renomeado */
+    font-size: 9pt;
+    display: flex;
+    justify-content: space-between;
+}
+.detalhes-consumo-pw-eltric .consumo-item-pw-eltric span {
+    color: #666;
+    margin-right: 3mm;
+}
+.detalhes-consumo-pw-eltric .consumo-item-pw-eltric strong {
+    color: var(--dark-bg);
+}
+
+/* Discriminação da Fatura */
+.discriminacao-fatura-pw-eltric { /* Renomeado */
+    padding: 5mm 10mm;
+}
+.discriminacao-fatura-pw-eltric .item-fatura {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9pt;
+    margin-bottom: 2pt;
+    padding-bottom: 1pt;
+    border-bottom: 0.25pt dotted #eee;
+}
+.discriminacao-fatura-pw-eltric .item-fatura.impostos {
+    color: #888;
+}
+.discriminacao-fatura-pw-eltric .item-fatura.total-fatura {
+    font-weight: bold;
+    font-size: 11pt;
+    color: var(--pw-eltric-blue); /* Usando a nova variável */
+    margin-top: 4mm;
+    border-top: 1pt solid var(--pw-eltric-border-gray); /* Usando a nova variável */
+    padding-top: 3mm;
+}
+
+/* Histórico de Consumo */
+.historico-consumo-pw-eltric { /* Renomeado */
+    padding: 5mm 10mm;
+}
+.historico-consumo-pw-eltric table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 3mm;
+}
+.historico-consumo-pw-eltric th,
+.historico-consumo-pw-eltric td {
+    border: 0.25pt solid #ddd;
+    padding: 4pt 6pt;
+    text-align: left;
+    font-size: 8pt;
+}
+.historico-consumo-pw-eltric th {
+    background-color: var(--pw-eltric-light-gray); /* Usando a nova variável */
+    color: var(--dark-bg);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.historico-consumo-pw-eltric tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+
+/* Informações de Pagamento */
+.pagamento-pw-eltric { /* Renomeado */
+    text-align: center;
+    padding: 5mm 10mm;
+}
+.pagamento-pw-eltric .valor-vencimento {
+    font-size: 11pt;
+    margin-bottom: 2mm;
+}
+.pagamento-pw-eltric .valor-vencimento strong {
+    color: var(--pw-eltric-blue); /* Usando a nova variável */
+    font-size: 13pt;
+}
+.pagamento-pw-eltric .codigo-barras {
+    margin-top: 5mm;
+    font-size: 9pt;
+}
+.pagamento-pw-eltric .barcode-number {
+    font-family: 'monospace';
+    font-size: 10pt;
+    margin-top: 2mm;
+    margin-bottom: 3mm;
+    word-break: break-all;
+}
+.pagamento-pw-eltric .barcode-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15mm;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    font-size: 0;
+    overflow: hidden;
+}
+.pagamento-pw-eltric .barcode-placeholder span {
+    background-color: black;
+    height: 100%;
+    display: inline-block;
+    margin: 0 0.5pt;
+}
+
+
+/* Rodapé */
+.rodape-pw-eltric { /* Renomeado */
+    text-align: center;
+    font-size: 7pt;
+    color: #999;
+    border-top: 0.5pt solid #eee;
+    padding-top: 5mm;
+    margin-top: 10mm;
+    background-color: transparent;
+    border-radius: 0;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+/* Esconder o componente de relatório quando ele não estiver sendo "impresso" */
+.relatorio-container-hidden {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+    z-index: -1;
+    background-color: #fff;
+}

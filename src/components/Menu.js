@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "primeicons/primeicons.css";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css"; // ou o tema que estiver usando
-import "./Menu.css";
+import "./Menu.css"; // Importa o CSS
 
 export default function Menu() {
   const toast = useRef(null);
@@ -46,21 +46,20 @@ export default function Menu() {
   return (
     <div className="floating-menu-wrapper">
       <Toast ref={toast} />
-      {/* Tooltips manuais */}
       <Tooltip target=".menu-icon-casa" content="Cadastro Casa" position="bottom" />
-      <Tooltip target=".menu-icon-inquilino"content="Cadastro Inquilino"position="bottom"
-      />
+      <Tooltip target=".menu-icon-inquilino" content="Cadastro Inquilino" position="bottom" />
       <Tooltip target=".menu-icon-sair" content="Sair" position="bottom" />
-      ,
+      
       <SpeedDial
         model={items}
         radius={150}
         type="quarter-circle"
         direction="down-right"
-        showIcon="pi pi-bars"
-        hideIcon="pi pi-times"
+        // ÍCONE DE RAIO CONFIGURADO AQUI
+        showIcon="pi pi-bolt" 
+        hideIcon="pi pi-bolt" 
         buttonClassName="custom-main-button"
-        style={{ position: "absolute", top: "0px", left: "0px" }}
+        style={{ position: "absolute", top: "0px", left: "0px" }} 
       />
     </div>
   );

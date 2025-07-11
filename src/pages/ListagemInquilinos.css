@@ -1,111 +1,414 @@
-/* Página de Listagem */
-.listagem-page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: linear-gradient(to bottom, #2c2c2c, #1a1a1a);
-  color: #fff;
-  padding: 20px;
-  box-sizing: border-box;
+/* Importa a fonte Poppins do Google Fonts para um visual moderno */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Variáveis CSS para a paleta de cores (se não estiverem já no seu :root principal) */
+/* Estas são as variáveis que você já tem no seu Menu.css, é bom tê-las em um lugar centralizado */
+:root {
+    --background-dark: #121212; /* Fundo geral mais escuro */
+    --surface-dark: #1F1F1F; /* Fundo para cartões/contêineres */
+    --primary-gold: #DFCD90; /* A cor dourada principal */
+    --light-text: #EEE; /* Texto claro para contraste */
+    --subtle-border: #444; /* Bordas e divisores mais discretos */
+    --shadow-color-light: rgba(223, 205, 144, 0.5); /* Sombra baseada no dourado */
+    --shadow-color-dark: rgba(0, 0, 0, 0.4); /* Sombra mais escura para profundidade */
+    --hover-bg-subtle: rgba(223, 205, 144, 0.1); /* Hover sutil com base no dourado */
+    --hover-gold-lighter: #e8dba4; /* Um dourado mais claro para hover */
+    --button-text-color-dark: #3A3427; /* Cor do texto em botões de destaque (marrom-acinzentado escuro) */
 }
 
-/* Cabeçalho com botão de ação */
+body {
+    background-color: var(--background-dark);
+    color: var(--light-text);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.listagem-page {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: var(--surface-dark);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
 .listagem-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--subtle-border);
+    padding-bottom: 15px;
 }
 
 .listagem-header h1 {
-  color: #DFCD90;
-  font-size: 1.8rem;
-  font-weight: bold;
+    color: var(--primary-gold);
+    font-size: 2.5em;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(223, 205, 144, 0.3);
 }
 
-.listagem-header button {
-  background: #DFCD90;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #121212;
-  box-shadow: 0 0 8px rgba(223, 205, 144, 0.5);
-  cursor: pointer;
-  transition: background 0.3s ease;
+.btn-voltar {
+    background-color: var(--primary-gold);
+    color: var(--button-text-color-dark);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.listagem-header button:hover {
-  background: #e8dba4;
+.btn-voltar:hover {
+    background-color: var(--hover-gold-lighter);
+    transform: translateY(-2px);
 }
 
-/* Container da Tabela */
 .listagem-container {
-  flex: 1;
- 
-  background: rgba(0, 0, 0, 0.65);
-  border-radius: 15px;
-  padding: 30px;
-  overflow-x: auto;
-  box-shadow: 0 0 10px rgba(223, 205, 144, 0.3);
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Tabela Scroll */
 .tabela-scroll {
-  max-height: 500px;
-  overflow-y: auto;
-  border-radius: 10px;
-}
-.h1{
-  color:#e8dba4; ;
+    overflow-x: auto; /* Permite rolagem horizontal em telas pequenas */
+    -webkit-overflow-scrolling: touch; /* Melhor rolagem em dispositivos iOS */
 }
 
-/* Estilo da Tabela */
 table {
-  width: 100%;
-  border-collapse: collapse;
-  background: rgba(255, 255, 255, 0.05);
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; /* Garante que a tabela tenha uma largura mínima para rolagem */
 }
 
 th, td {
-  padding: 12px;
-  border-bottom: 1px solid #DFCD90;
-  text-align: left;
-  color: #fff;
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--subtle-border);
+    font-size: 0.95em;
+    white-space: nowrap; /* Impede que o texto quebre linhas */
 }
 
-th {
-  background-color: rgba(223, 205, 144, 0.25);
-  color: #DFCD90;
+thead th {
+    background-color: var(--primary-gold);
+    color: var(--button-text-color-dark);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-/* Ações */
-td button {
-  background: #DFCD90;
-  border: none;
-  border-radius: 8px;
-  padding: 6px 12px;
-  margin-right: 5px;
-  font-weight: bold;
-  color: #121212;
-  cursor: pointer;
-  transition: 0.2s;
+tbody tr:hover {
+    background-color: var(--hover-bg-subtle);
 }
 
-td button:hover {
-  background: #e8dba4;
+.no-data-message {
+    text-align: center;
+    padding: 30px;
+    color: var(--text-light);
+    font-style: italic;
 }
 
-/* Responsivo */
-@media (max-width: 768px) {
-  .listagem-header {
+.botoes-acoes {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.split-button-custom .p-button {
+    background-color: var(--primary-gold);
+    color: var(--button-text-color-dark);
+    border: none;
+    padding: 8px 12px;
+    font-size: 0.9em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.split-button-custom .p-button:hover {
+    background-color: var(--hover-gold-lighter);
+    transform: translateY(-1px);
+}
+
+.split-button-custom .p-splitbutton-menubutton {
+    background-color: var(--primary-gold); /* Cor do botão de menu */
+    color: var(--button-text-color-dark);
+    border: none;
+    border-radius: 0 5px 5px 0;
+}
+
+.split-button-custom .p-splitbutton-menubutton:hover {
+    background-color: var(--hover-gold-lighter);
+}
+
+/* Estilo para os itens do menu do SplitButton */
+.p-splitbutton-menu {
+    background-color: var(--card-bg) !important;
+    border: 1px solid var(--subtle-border) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    overflow: hidden; /* Garante que o border-radius funcione */
+}
+
+.p-splitbutton-menu .p-menuitem .p-menuitem-link {
+    color: var(--text-light) !important;
+    padding: 10px 15px !important;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.p-splitbutton-menu .p-menuitem .p-menuitem-link:hover {
+    background-color: var(--hover-bg-subtle) !important;
+    color: var(--primary-gold) !important;
+}
+
+.p-splitbutton-menu .p-menuitem .p-menuitem-link .p-menuitem-icon {
+    color: var(--primary-gold) !important; /* Ícones dourados no menu */
+    margin-right: 8px;
+}
+
+.btn-ver-historico {
+    background-color: transparent;
+    color: var(--primary-gold);
+    border: 1px solid var(--primary-gold);
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-ver-historico:hover {
+    background-color: var(--primary-gold);
+    color: var(--button-text-color-dark);
+}
+
+/* Histórico Overlay */
+.historico-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85); /* Fundo escuro semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 15px; /* Reduzido o padding */
+    box-sizing: border-box;
+    backdrop-filter: blur(5px); /* Efeito de desfoque */
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.historico-container {
+    background-color: var(--surface-dark);
+    border-radius: 15px;
+    padding: 25px; /* Reduzido o padding */
+    width: 95%; /* Aumentado um pouco a largura para usar mais espaço */
+    max-width: 900px; /* Reduzido o max-width */
+    height: 90%; /* Aumentado a altura para usar mais espaço vertical */
+    overflow-y: auto; /* Rolagem interna se o conteúdo for grande */
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* Reduzido o gap */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.historico-gauge {
+    flex-shrink: 0; /* Não encolher */
+    text-align: center;
+    background-color: var(--card-bg);
+    padding: 15px; /* Reduzido o padding */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--subtle-border);
+}
+
+.historico-gauge h3 {
+    color: var(--primary-gold);
+    margin-top: 0;
+    font-size: 1.2em; /* Levemente reduzido */
+}
+
+.gauge-value-num {
+    font-size: 1.6em; /* Levemente reduzido */
+    font-weight: bold;
+    color: var(--text-light);
+    margin-top: 8px;
+}
+
+.historico-info {
+    flex-grow: 1;
+    background-color: var(--card-bg);
+    padding: 15px; /* Reduzido o padding */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--subtle-border);
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
+    align-items: center;
+}
 
-  td button {
-    margin-bottom: 6px;
-  }
+.historico-info h2 {
+    color: var(--primary-gold);
+    margin-top: 0;
+    margin-bottom: 15px; /* Reduzido */
+    font-size: 1.6em; /* Levemente reduzido */
+    text-align: center;
+}
+
+/* Estilos para os eixos e rótulos do BarChart */
+.MuiChartsAxis-tickLabel {
+    fill: var(--light-text) !important;
+    font-size: 0.85em; /* Reduzido o tamanho da fonte dos rótulos do gráfico */
+}
+
+.MuiChartsAxis-label {
+    fill: var(--primary-gold) !important;
+    font-size: 0.9em; /* Reduzido o tamanho da fonte dos labels do eixo */
+}
+
+.MuiChartsAxis-line {
+    stroke: var(--subtle-border) !important;
+}
+
+.btn-fechar-historico {
+    position: absolute;
+    top: 20px; /* Ajustado a posição */
+    right: 20px; /* Ajustado a posição */
+    background-color: var(--primary-gold);
+    color: var(--button-text-color-dark);
+    border: none;
+    padding: 8px 12px; /* Reduzido o padding */
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em; /* Reduzido o tamanho da fonte */
+    display: flex;
+    align-items: center;
+    gap: 6px; /* Reduzido o gap */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 1001;
+}
+
+.btn-fechar-historico:hover {
+    background-color: var(--hover-gold-lighter);
+    transform: scale(1.05);
+}
+
+/* Estilo para o botão de gerar PDF */
+.btn-gerar-pdf {
+    background-color: var(--primary-gold); /* Dourado */
+    color: var(--button-text-color-dark); /* Texto escuro */
+    border: none;
+    padding: 8px 15px; /* Reduzido o padding */
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em; /* Reduzido o tamanho da fonte */
+    display: flex;
+    align-items: center;
+    gap: 6px; /* Reduzido o gap */
+    margin-top: 15px; /* Reduzido o espaçamento */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+}
+
+.btn-gerar-pdf:hover {
+    background-color: var(--hover-gold-lighter);
+    transform: translateY(-2px);
+}
+
+.btn-gerar-pdf .pi {
+    font-size: 1.2em;
+}
+
+/* Oculta o componente de relatório para impressão da tela, mas o mantém no DOM */
+.relatorio-container-hidden {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+    z-index: -1;
+}
+
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .historico-container {
+        flex-direction: column;
+        height: auto;
+        max-height: 90vh;
+        padding: 20px; /* Ajuste para mobile */
+    }
+
+    .historico-gauge,
+    .historico-info {
+        width: 100%;
+        margin-bottom: 15px; /* Reduzido */
+    }
+
+    .listagem-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .listagem-page {
+        padding: 10px;
+        margin: 10px auto;
+    }
+
+    th, td {
+        padding: 8px 10px; /* Reduzido */
+        font-size: 0.85em; /* Reduzido */
+    }
+
+    .botoes-acoes {
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-start;
+    }
+
+    .split-button-custom .p-button {
+        padding: 5px 8px; /* Reduzido */
+        font-size: 0.75em; /* Reduzido */
+    }
+    
+    .btn-ver-historico {
+        padding: 5px 8px; /* Reduzido */
+        font-size: 0.75em; /* Reduzido */
+    }
+
+    .btn-fechar-historico {
+        top: 10px;
+        right: 10px;
+        font-size: 0.9em;
+        padding: 6px 10px;
+    }
+
+    .historico-gauge h3 {
+        font-size: 1.1em;
+    }
+
+    .gauge-value-num {
+        font-size: 1.4em;
+    }
+
+    .historico-info h2 {
+        font-size: 1.4em;
+    }
+
+    .btn-gerar-pdf {
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
 }

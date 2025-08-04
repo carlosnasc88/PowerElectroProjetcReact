@@ -1,16 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './components/login';
-import Home from './pages/Home';
 import Casa from './pages/Casa';
 import Inquilino from './pages/Inquilino';
 import ListagemCasasAtivas from './pages/ListagemDeAtivos';
 import ListagemInquilinos from './pages/ListagemInquilinos';
+import CadastroUsuario from './pages/CadastroUsuario';
+import Menu from './components/Menu';
+import QuemSomos from './pages/QuemSomos';
+import { PhotoService } from './pages/PhotoService';
+import RelatorioContainer from './components/RelatorioContaDeLuz';
+
+
+
 import 'primereact/resources/themes/lara-dark-indigo/theme.css'; 
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-import { PrimeReactProvider } from 'primereact/api'; 
-import CadastroUsuario from './pages/CadastroUsuario';
-import Menu from './components/Menu';
+
+
 
 
 
@@ -28,6 +34,9 @@ function App() {
         <Route path="inquilinos/listagem-inquilinos" element={<ListagemInquilinos />}/>
         <Route path="/usuarios" element={<CadastroUsuario />} />
         <Route path="/CadastroUsuario" element={<CadastroUsuario />} />
+        <Route path="/QuemSomos" element={<QuemSomos />} />
+        <Route path="/PhotoService" element={<PhotoService />} />
+        <Route path="/relatorio/:id" element={<RelatorioContainer />} />
        
         
 

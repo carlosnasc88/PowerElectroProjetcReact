@@ -26,6 +26,12 @@ export default function Menu() {
       command: () => navigate("/inquilino"),
     },
     {
+      label: "Quem Somos",
+      icon: "pi pi-info-circle",
+      className: "menu-icon-quem",
+      command: () => navigate("/QuemSomos"),
+    },
+    {
       label: "Sair",
       icon: "pi pi-power-off",
       className: "menu-icon-sair",
@@ -46,6 +52,7 @@ export default function Menu() {
         <Toast ref={toast} />
         <Tooltip target=".menu-icon-casa" content="Cadastro Casa" position="bottom" />
         <Tooltip target=".menu-icon-inquilino" content="Cadastro Inquilino" position="bottom" />
+        <Tooltip target=".menu-icon-quem" content="Quem Somos" position="bottom" />
         <Tooltip target=".menu-icon-sair" content="Sair" position="bottom" />
 
         <SpeedDial

@@ -1,6 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+/*
+  =============================
+  Variáveis CSS para consistência
+  =============================
+*/
 :root {
+  /* Cores */
+  --color-gold-light: #dfcd90;
+  --color-white: #fff;
+  --color-text-dark: #000;
+  --bg-dark-blur: rgba(0, 0, 0, 0.25);
+  --border-gold-medium: rgba(223, 205, 144, 0.6);
+  --shadow-gold-light: rgba(223, 205, 144, 0.3);
+  --bg-button-dark: rgba(0, 0, 0, 0.5);
+
+  /* Variáveis do novo código */
   --background-dark: #121212;
   --surface-dark: #1F1F1F;
   --primary-accent: #DFCD90;
@@ -10,6 +25,28 @@
   --glass-shadow: rgba(0, 0, 0, 0.3);
   --neon-glow: rgba(223, 205, 144, 0.6);
   --icon-color-glass: #DFCD90;
+
+  /* Espaçamento e Tamanhos */
+  --spacing-lg: 40px;
+  --spacing-md: 20px;
+  --spacing-sm: 10px;
+  --font-size-h1: 36px;
+  --font-size-p: 18px;
+  --line-height-p: 1.6;
+  --max-width-container: 900px;
+  --max-width-gallery: 640px;
+
+  /* Efeitos e Transições */
+  --border-radius-lg: 30px;
+  --border-radius-md: 10px;
+  --transition-fast: all 0.3s ease-in-out;
+  --backdrop-blur: blur(16px);
+  --backdrop-blur-menu: blur(8px);
+  --backdrop-blur-footer: blur(10px);
+
+  /* Variáveis já existentes, definidas para centralizar */
+  --primary-gold: var(--color-gold-light);
+  --button-text-color-dark: var(--color-text-dark);
 }
 
 body {
@@ -19,6 +56,100 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+/*
+  =============================
+  Estilos existentes (quem-container)
+  =============================
+*/
+.quem-container {
+  max-width: var(--max-width-container);
+  margin: 50px auto;
+  padding: var(--spacing-lg);
+  background: var(--bg-dark-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  backdrop-filter: var(--backdrop-blur);
+  border: 2px solid var(--border-gold-medium);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 0 25px var(--shadow-gold-light);
+  color: var(--color-gold-light);
+  text-align: center;
+  transition: var(--transition-fast);
+}
+
+.quem-container h1 {
+  font-size: var(--font-size-h1);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-gold-light);
+}
+
+.quem-texto {
+  font-size: var(--font-size-p);
+  line-height: var(--line-height-p);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-white);
+}
+
+.quem-galeria {
+  max-width: var(--max-width-gallery);
+  margin: 0 auto;
+}
+
+.quem-img {
+  width: 100%;
+  border-radius: var(--border-radius-md);
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* === Botões de navegação do Galleria === */
+.p-galleria .p-galleria-item-nav {
+  background-color: var(--bg-button-dark);
+  border: none;
+  border-radius: 50%;
+  width: var(--spacing-lg);
+  height: var(--spacing-lg);
+  margin: 0 var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.p-galleria .p-galleria-item-nav:hover {
+  background-color: var(--border-gold-medium);
+}
+
+.p-galleria .p-galleria-item-next,
+.p-galleria .p-galleria-item-prev {
+  font-size: 1.5rem;
+  color: var(--color-white);
+}
+
+.p-galleria .p-galleria-item-next:focus,
+.p-galleria .p-galleria-item-prev:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+
+.btn-voltar {
+  background-color: var(--primary-gold);
+  color: var(--button-text-color-dark);
+  border: none;
+  padding: 10px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/*
+  =============================
+  Novos Estilos (Menu e Footer)
+  =============================
+*/
 .floating-menu-wrapper {
   position: fixed;
   top: 0;
@@ -36,8 +167,8 @@ body {
 .custom-main-button.p-speeddial-button {
   background-color: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: var(--backdrop-blur-menu);
+  -webkit-backdrop-filter: var(--backdrop-blur-menu);
   color: var(--icon-color-glass);
   box-shadow: 0 4px 15px var(--glass-shadow);
   width: 200px;
@@ -142,42 +273,6 @@ body {
   transition: opacity 0.3s ease;
 }
 
-/* Responsivo */
-@media (max-width: 768px) {
-  .custom-main-button.p-speeddial-button {
-    width: 60px;
-    height: 60px;
-    font-size: 1.8rem;
-  }
-
-  .p-speeddial-action {
-    width: 45px !important;
-    height: 45px !important;
-  }
-
-  .p-speeddial-action .p-speeddial-action-icon {
-    font-size: 1.3rem !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .custom-main-button.p-speeddial-button {
-    width: 50px;
-    height: 50px;
-    font-size: 1.6rem;
-  }
-
-  .p-speeddial-action {
-    width: 40px !important;
-    height: 40px !important;
-  }
-
-  .p-speeddial-action .p-speeddial-action-icon {
-    font-size: 1.1rem !important;
-  }
-}
-
-
 .app-footer {
   width: 100%;
   padding: 15px 30px;
@@ -186,8 +281,8 @@ body {
   left: 0;
   z-index: 999;
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: var(--backdrop-blur-footer);
+  -webkit-backdrop-filter: var(--backdrop-blur-footer);
   border-top: 1px solid rgba(223, 205, 144, 0.2);
   display: flex;
   justify-content: center;
@@ -205,8 +300,95 @@ body {
   gap: 4px;
 }
 
+/*
+  =============================
+  Responsividade
+  =============================
+*/
 @media (max-width: 768px) {
+  .quem-container {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+
+  .quem-container h1 {
+    font-size: 28px;
+  }
+
+  .quem-texto {
+    font-size: 16px;
+  }
+
+  .p-galleria .p-galleria-item-nav {
+    width: 35px;
+    height: 35px;
+    margin: 0 5px;
+  }
+
+  .p-galleria .p-galleria-item-next,
+  .p-galleria .p-galleria-item-prev {
+    font-size: 1.2rem;
+  }
+
+  .custom-main-button.p-speeddial-button {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+  }
+
+  .p-speeddial-action {
+    width: 45px !important;
+    height: 45px !important;
+  }
+
+  .p-speeddial-action .p-speeddial-action-icon {
+    font-size: 1.3rem !important;
+  }
+
   .footer-content {
     font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .quem-container {
+    padding: 20px;
+  }
+
+  .quem-container h1 {
+    font-size: 24px;
+  }
+
+  .quem-texto {
+    font-size: 15px;
+  }
+
+  .quem-galeria {
+    max-width: 100%;
+  }
+
+  .p-galleria .p-galleria-item-nav {
+    width: 30px;
+    height: 30px;
+  }
+
+  .p-galleria .p-galleria-item-next,
+  .p-galleria .p-galleria-item-prev {
+    font-size: 1rem;
+  }
+
+  .custom-main-button.p-speeddial-button {
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+  }
+
+  .p-speeddial-action {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .p-speeddial-action .p-speeddial-action-icon {
+    font-size: 1.1rem !important;
   }
 }

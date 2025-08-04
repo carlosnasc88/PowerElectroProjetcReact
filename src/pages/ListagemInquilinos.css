@@ -218,6 +218,8 @@ tbody tr:hover {
     flex-direction: row;
     gap: 20px; /* Reduzido o gap */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    /* Adicionado position: relative; para que o botão seja posicionado dentro deste contêiner */
+    position: relative;
 }
 
 .historico-gauge {
@@ -278,23 +280,32 @@ tbody tr:hover {
     stroke: var(--subtle-border) !important;
 }
 
-.btn-fechar-historico {
-    position: absolute;
-    top: 20px; /* Ajustado a posição */
-    right: 20px; /* Ajustado a posição */
-    background-color: var(--primary-gold);
-    color: var(--button-text-color-dark);
-    border: none;
-    padding: 8px 12px; /* Reduzido o padding */
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.9em; /* Reduzido o tamanho da fonte */
-    display: flex;
-    align-items: center;
-    gap: 6px; /* Reduzido o gap */
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    z-index: 1001;
+.historico-container {
+ position: relative; /* Isso é essencial */
 }
+
+.btn-fechar-historico {
+position: absolute;
+top: 20px;
+right: 20px;
+background-color: var(--primary-gold);
+color: var(--button-text-color-dark);
+border: none;
+padding: 6px 10px;
+border-radius: 8px;
+cursor: pointer;
+font-size: 0.8em;
+display: inline-flex;
+align-items: center;
+gap: 6px;
+z-index: 1001;
+width: auto;
+height: auto;
+max-width: none;
+max-height: none;
+transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
 
 .btn-fechar-historico:hover {
     background-color: var(--hover-gold-lighter);

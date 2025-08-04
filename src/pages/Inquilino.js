@@ -241,6 +241,7 @@ export default function Inquilino() {
               <button type="submit">Salvar</button>
               <button
                 type="button"
+                className="button-danger"
                 onClick={() => {
                   if (isEditando) {
                     navigate("/inquilinos/listagem-inquilinos");
@@ -258,8 +259,8 @@ export default function Inquilino() {
 
         {!formAtivo && !isEditando && (
           <div className="button-group" style={{ marginTop: "30px", justifyContent: "center" }}>
-            <button type="button" onClick={() => setFormAtivo(true)}>Novo Inquilino</button>
-            <button type="button" onClick={() => navigate("/inquilinos/listagem-inquilinos")}>Listar Inquilinos</button>
+            <button type="button" className="button-success" onClick={() => setFormAtivo(true)}>Novo Inquilino</button>
+            <button type="button" className="button-success" onClick={() => navigate("/inquilinos/listagem-inquilinos")}>Listar Inquilinos</button>
             <button
               type="button"
               className="button-danger"

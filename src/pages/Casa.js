@@ -71,8 +71,9 @@ export default function Casa() {
 
   return (
     <div >
+      <h1>Cadastro de Apartamento</h1>
       <div className="cadastro-container">
-        <h1>Cadastro de Apartamento</h1>
+        
 
         {erro && <p className="error-message">{erro}</p>}
 

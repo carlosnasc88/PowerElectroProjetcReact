@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+/* --- Variáveis de Cores fornecidas --- */
+:root {
+  --background-dark: #121212;
+  --surface-dark: rgba(31, 31, 31, 0.4); /* Mais transparente */
+  --primary-accent: #DFCD90;
+  --text-light: #EEEEEE;
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(223, 205, 144, 0.2);
+  --glass-shadow: rgba(0, 0, 0, 0.3);
+  --neon-glow: rgba(223, 205, 144, 0.6);
+  --icon-color-glass: #DFCD90;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(145deg, #121212 0%, #1f1f1f 100%);
+  color: var(--text-light);
+}
+
+/* --- Layout do Login e Formulário --- */
+.login-box {
+  position:relative;
+  width: 400px;
+  padding: 20px;
+  background: rgba(5, 5, 5, 0.02);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px var(--glass-shadow);
+}
+
+.login-box form {
+  width: 100%;
+  padding: 0 20px;
+}
+
+h2 {
+  font-size: 2em;
+  color: var(--text-light);
+  text-align: center;
+}
+
+/* --- Estilo dos Campos de Input --- */
+.input-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-box input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: 2px solid var(--glass-border);
+  outline: none;
+  border-radius: 40px;
+  font-size: 1em;
+  color: var(--text-light);
+  padding: 0 20px;
+  transition: .5s ease;
+}
+
+.input-box input:focus,
+.input-box input:valid {
+  border-color: var(--primary-accent);
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: var(--text-light);
+  pointer-events: none;
+  transition: .5s ease;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+  top: 10px;
+  font-size: .8em;
+  background: var(--surface-dark);
+  padding: 0 6px;
+  color: var(--primary-accent);
+}
+
+/* --- Outros Elementos e Botões --- */
+.repurasenha {
+  margin-bottom: 10px;
+  text-align: right;
+  color: var(--text-light);
+  font-size: 10px;
+  text-decoration: underline;
+}
+
+button {
+  width: 100%;
+  height: 45px;
+  background: var(--primary-accent);
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 1em;
+  color: var(--background-dark);
+  font-weight: 600;
+}
+
+button:hover {
+  background: var(--neon-glow);
+}
+
+.center {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-light);
+}
+
+a:hover {
+  color: var(--primary-accent);
+}
+
+.cadastro-lik {
+  margin: 20px 0 10px;
+  text-align: center;
+}
+
+.cadastro-lik a {
+  font-size: 1em;
+  color: var(--primary-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cadastro-lik a:hover {
+  text-decoration: underline;
+}
+
+.bnt {
+  color: var(--primary-accent);
+}
+
+/* --- Efeito de Animação --- */
+.login-box span {
+  position: absolute;
+  left: 40px;
+  top: 210px;
+  width: 25px;
+  height: 6px;
+  background: rgba(5, 5, 5, 0.02);
+  border-radius: 8px;
+  transform-origin: 158px;
+  transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50)));
+  animation: animateBlink 3s linear infinite;
+  animation-delay: calc(var(--i) * (3s / 50));
+}
+
+@keyframes animateBlink {
+  0% {
+    background: var(--primary-accent);
+  }
+  25% {
+    background: var(--surface-dark);
+  }
+}
+
+/* --- Menu --- */
+.menu {
+  list-style: none;
+  float: left;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.menu li {
+  position: relative;
+  float: left;
+  border-right: 1px solid var(--primary-accent);
+}
+
+.menu li a {
+  color: var(--text-light);
+  text-decoration: none;
+  padding: 5px 10px;
+  display: block;
+}
+
+.menu li a:hover {
+  background: var(--surface-dark);
+  color: var(--primary-accent);
+  box-shadow: 0 3px 10px 0 var(--glass-shadow);
+  text-shadow: 0px 0px 5px var(--text-light);
+}
+
+.menu li ul {
+  position: absolute;
+  top: 25px;
+  left: 0;
+  background-color: var(--surface-dark);
+  display: none;
+}
+
+.menu li ul li {
+  border: 1px solid var(--glass-border);
+  display: block;
+  width: 150px;
+}

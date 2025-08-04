@@ -53,7 +53,7 @@ export default function ListagemCasasAtivas() {
     </div>
 
     <div className="button-group">
-      <button onClick={() => navigate('/')}>Voltar à Home</button>
+      <button onClick={() => navigate('/Menu')}>Voltar à Home</button>
     </div>
   </div>
 );

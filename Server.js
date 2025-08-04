@@ -13,6 +13,8 @@ app.use('/', casasRoutes);
 app.use("/CasasAtivas", casasRoutes);
 app.use("/inquilinos", inquilinosRoutes);
 app.use("/listagem-inquilinos",inquilinosRoutes)
+app.use("/usuarios", require("./routes/usuarioRoutes"));
+app.use("/usuarios/listar", require("./routes/usuarioRoutes"));
 
 const port = 5500;
 app.listen(port, () => {

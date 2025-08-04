@@ -5,8 +5,8 @@ import { Tooltip } from "primereact/tooltip";
 import { useNavigate } from "react-router-dom";
 import "primeicons/primeicons.css";
 import "primereact/resources/primereact.min.css";
-import "primereact/resources/themes/lara-light-indigo/theme.css"; // ou o tema que estiver usando
-import "./Menu.css"; // Importa o CSS
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "./Menu.css";
 
 export default function Menu() {
   const toast = useRef(null);
@@ -18,49 +18,54 @@ export default function Menu() {
       icon: "pi pi-home",
       className: "menu-icon-casa",
       command: () => navigate("/casa"),
-      id: "tooltip-casa",
     },
     {
       label: "Cadastro Inquilino",
       icon: "pi pi-user",
       className: "menu-icon-inquilino",
       command: () => navigate("/inquilino"),
-      id: "tooltip-inquilino",
     },
     {
       label: "Sair",
       icon: "pi pi-power-off",
       className: "menu-icon-sair",
       command: () => {
-        toast.current.show({
+        toast.current?.show({
           severity: "warn",
           summary: "Sair",
           detail: "Você saiu da aplicação.",
         });
-        setTimeout(() => navigate("/login"), 1000);
+        setTimeout(() => navigate("/"), 1000);
       },
-      id: "tooltip-sair",
     },
   ];
 
   return (
-    <div className="floating-menu-wrapper">
-      <Toast ref={toast} />
-      <Tooltip target=".menu-icon-casa" content="Cadastro Casa" position="bottom" />
-      <Tooltip target=".menu-icon-inquilino" content="Cadastro Inquilino" position="bottom" />
-      <Tooltip target=".menu-icon-sair" content="Sair" position="bottom" />
-      
-      <SpeedDial
-        model={items}
-        radius={150}
-        type="quarter-circle"
-        direction="down-right"
-        // ÍCONE DE RAIO CONFIGURADO AQUI
-        showIcon="pi pi-bolt" 
-        hideIcon="pi pi-bolt" 
-        buttonClassName="custom-main-button"
-        style={{ position: "absolute", top: "0px", left: "0px" }} 
-      />
-    </div>
+    <>
+      <div className="floating-menu-wrapper">
+        <Toast ref={toast} />
+        <Tooltip target=".menu-icon-casa" content="Cadastro Casa" position="bottom" />
+        <Tooltip target=".menu-icon-inquilino" content="Cadastro Inquilino" position="bottom" />
+        <Tooltip target=".menu-icon-sair" content="Sair" position="bottom" />
+
+        <SpeedDial
+          model={items}
+          radius={260}
+          type="circle"
+          direction="up"
+          showIcon="pi pi-bolt"
+          hideIcon="pi pi-times"
+          buttonClassName="custom-main-button"
+          style={{ position: "absolute", top: "40%", left: "50%", transform: "translate(-50%, -50%)" }}
+        />
+      </div>
+
+      <footer className="app-footer">
+        <div className="footer-content">
+          <span>© {new Date().getFullYear()} Power Electro Project</span>
+          <span>Desenvolvido por PWE Tecnologic</span>
+        </div>
+      </footer>
+    </>
   );
 }

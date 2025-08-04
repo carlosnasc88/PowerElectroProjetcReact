@@ -263,7 +263,7 @@ export default function Inquilino() {
             <button
               type="button"
               className="button-danger"
-              onClick={() => navigate("/")}> Cancelar
+              onClick={() => navigate("/Menu")}> Cancelar
             </button>
           </div>
         )}
